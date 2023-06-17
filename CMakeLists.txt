@@ -17,14 +17,20 @@ project(cmake_experiments)
 
 add_executable(cmake_experiments Main.cpp MSBuild.props)
 
+
 # Add a user properties sheet
 set_target_properties(cmake_experiments PROPERTIES VS_USER_PROPS "${CMAKE_SOURCE_DIR}/MSBuild.props")
 
+# Adding a second property sheet fails see https://gitlab.kitware.com/cmake/cmake/-/issues/25003
+# set_target_properties(cmake_experiments PROPERTIES VS_USER_PROPS "${CMAKE_SOURCE_DIR}/A.props")
+
+# Build STD modules
 # See https://developercommunity.visualstudio.com/t/C-modules:-basic-example-wont-compile/1589437 for -sanatize=address blowing up when compiling std.ixx
 # See also https://developercommunity.visualstudio.com/t/Visual-Studio-always-scans-for-module-de/10385275 for my whinings
 set_target_properties(cmake_experiments PROPERTIES VS_GLOBAL_BuildStlModules "true")
 
 
-# ASAN address sanitizer, this map map to <PropertyGroup><EnableASAN>false</EnableASAN></PropertyGroup> in the generated .vxcprojfile
-set_target_properties(cmake_experiments PROPERTIES VS_GLOBAL_EnableASAN "true")
+# ASAN address sanitizer
 # target_compile_options(cmake_experiments PUBLIC "-fsanitize=address")
+# This should map to <PropertyGroup><EnableASAN>false</EnableASAN></PropertyGroup> in the generated .vxcprojfile
+set_target_properties(cmake_experiments PROPERTIES VS_GLOBAL_EnableASAN "true")

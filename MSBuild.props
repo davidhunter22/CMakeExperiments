@@ -2,7 +2,7 @@
 <Project>
 
     <PropertyGroup>
-        <EnableASAN>true</EnableASAN>
+        <EnableASAN>$(EnableASAN)</EnableASAN>
     </PropertyGroup>
 
     <ItemDefinitionGroup>
