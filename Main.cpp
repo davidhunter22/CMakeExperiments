@@ -1,3 +1,4 @@
+import std;
 
 void double_free( )
 {
@@ -9,6 +10,8 @@ void double_free( )
 
 int main( )
 {
+    std::vector v;
+
     double_free( );
 
     return 0;
