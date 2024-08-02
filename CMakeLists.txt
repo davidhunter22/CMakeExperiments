@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 
+# cmake --preset=clang18-x64-debug-std-modules ../main
+
 message( STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
 message( STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
 
@@ -18,12 +20,12 @@ source_group( " "  REGULAR_EXPRESSION .*)
 
 project(cmake_experiments)
 
-add_executable(cmake_experiments Main.cpp MSBuild.props A.props)
+add_executable(cmake_experiments Main.cpp MSBuild.props A.props) # CMakePresets.json)
 
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     message(STATUS "Adding flags for Clang libc++ standard library module")
-    target_compile_options(cmake_experiments PUBLIC -fmodules)
+    # target_compile_options(cmake_experiments PUBLIC -fmodules)
 
     message(STATUS "Adding flags for Clang libc++ standard library")
     target_compile_options(cmake_experiments PUBLIC -stdlib=libc++)
@@ -33,7 +35,7 @@ endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     # Add a user properties sheet
-    set_target_properties(cmake_experiments PROPERTIES VS_USER_PROPS "${CMAKE_SOURCE_DIR}/MSBuild.props;${CMAKE_SOURCE_DIR}/A.props")
+    set_target_properties(cmake_experiments PROPERTIES VS_USER_PROPS "${CMAKE_SOURCE_DIR}/MSBuild.props")
 
     # Adding a second property sheet fails see https://gitlab.kitware.com/cmake/cmake/-/issues/25003
     # set_target_properties(cmake_experiments PROPERTIES VS_USER_PROPS "${CMAKE_SOURCE_DIR}/A.props")
