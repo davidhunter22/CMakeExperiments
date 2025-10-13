@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/HelloWorldTargets.cmake")
+
+check_required_components(HelloWorld)
+
+# This forces the consumer to have zlib available
+include(CMakeFindDependencyMacro)
+find_dependency(ZLIB REQUIRED)

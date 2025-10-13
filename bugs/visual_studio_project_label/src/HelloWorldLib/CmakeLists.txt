@@ -1,0 +1,8 @@
+source_group( " "  REGULAR_EXPRESSION .*)
+
+add_library(hello_world_lib STATIC  HelloWorld.cpp HelloWorld.h)
+
+
+set_target_properties(hello_world_lib PROPERTIES PROJECT_LABEL WhatsUpDoc)
+set_target_properties(hello_world_lib PROPERTIES FOLDER FooBar)
+

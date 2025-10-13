@@ -1,0 +1,1 @@
+Why can't you debug CMakeLists.txt files with a VS solution generated of the command line

@@ -1,0 +1,28 @@
+I was trying to add a custom command that used single quotes and ran into an issue with escaping/quoting.
+The following is a fairly minimal test case, note this is with 3.28.1 on Windows. I am using the Visual Studio generator.
+So I have a CMakeLists.txt file that looks like
+```
+cmake_minimum_required(VERSION 3.25)
+
+project(hello_world)
+
+add_executable(hello_world HelloWorld.cpp)
+
+add_custom_command(
+    TARGET hello_world
+    COMMAND  echo ' > Foo.out
+    COMMENT  Stuff
+    VERBATIM)
+```
+So the intent here is to write a single quote character into a text file called Foo.out. However the text file has the text `"'"` added. If I look at the command line in the generated Visual Studio project it's
+`echo "'" &gt; Foo.out`
+The &gt; makes sense here as the VS output is an XML file so the '>' was correctly converted to `\&gt;`
+The question is why are the double quotes added?
+I tried every alternative I could think of like `\'` which also produced `"'"`.
+Nothing I could find would write out an unquoted single quote. 
+I am wondering if CMake thinks that a single quote is a special character on a windows command line but I don't think it is. 
+Comands like `echo ' > tmp` and `dir '` are perfectly valid although weird looking. 
+
+So maybe there is a way to do what I'm trying but if there is it doesn't seem to be documented anywhere.
+On the documentation front I think it would be extremely useful to have a bunch of examples that show some text in a CMakeLists.text and what will actually appear in a generated Visual Studio project. 
+The documentation at https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#escape-sequences is all I could find and it doesn't help here in the slightest.

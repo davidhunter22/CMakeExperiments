@@ -1,0 +1,7 @@
+add_executable(hello_world_app Main.cpp)
+
+source_group( " "  REGULAR_EXPRESSION .*)
+
+include_directories(${CMAKE_SOURCE_DIR}/HelloWorldLib)
+
+target_link_libraries(hello_world_app PUBLIC hello_world_lib)
