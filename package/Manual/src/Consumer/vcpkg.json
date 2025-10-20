@@ -1,8 +1,0 @@
-{
-  "name": "hello-world",
-  "version-semver": "0.1.0",
-  "dependencies": [
-    "ms-gsl",
-    "doctest"
-  ]
-}

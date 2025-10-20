@@ -1,6 +1,6 @@
 #include "GoodbyeWorld.h"
 
-#include <HelloWorld/HelloWorld.h>
+#include <HelloWorld.h>
 
 uint64_t bar()
 {

@@ -10,7 +10,7 @@ set_property(DIRECTORY APPEND PROPERTY VS_SOLUTION_ITEMS vcpkg.json)
 
 project(Producer LANGUAGES CXX)
 
-find_package(fmt CONFIG REQUIRED)
+find_package(cityhash CONFIG REQUIRED)
 
 add_subdirectory(HelloWorld)
 add_subdirectory(GoodbyeWorld)

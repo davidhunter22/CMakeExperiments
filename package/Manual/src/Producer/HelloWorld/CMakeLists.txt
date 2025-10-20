@@ -1,9 +1,9 @@
-source_group( " "  REGULAR_EXPRESSION .*)
-
 add_library(HelloWorld STATIC HelloWorld.cpp)
 
-target_sources(HelloWorld PUBLIC FILE_SET HEADERS FILES HelloWorld.h)
+target_sources(HelloWorld PUBLIC 
+   FILE_SET HEADERS BASE_DIRS ${CMAKE_SOURCE_DIR} 
+   FILES HelloWorld.h)
 
-set_target_properties(HelloWorld PROPERTIES CMAKE_CXX_STANDARD 23)
+target_link_libraries(HelloWorld PUBLIC fmt::fmt)
 
-target_link_libraries(HelloWorld PUBLIC Microsoft.GSL::GSL)
+target_compile_options(HelloWorld PRIVATE "/utf-8")

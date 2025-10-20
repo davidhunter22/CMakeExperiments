@@ -1,9 +1,7 @@
 {
-  "name": "producer",
+  "name": "hello-world",
   "version-semver": "1.0.0",
   "dependencies": [
-    "7zip",
-    "cityhash",
     "fmt"
   ]
 }
