@@ -1,7 +1,8 @@
 #pragma once
 
-#include <HelloWorld/helloworld_export.h>
+// #include "helloworld_export.h"
 
-#include "stdint.h"
+#include <stdint.h>
 
-HELLOWORLD_EXPORT uint64_t foo();
+//HELLOWORLD_EXPORT 
+uint64_t foo();
