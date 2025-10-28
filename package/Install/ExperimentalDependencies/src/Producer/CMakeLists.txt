@@ -17,7 +17,7 @@ add_subdirectory(HelloWorld)
 add_subdirectory(GoodbyeWorld)
 
 install(
-    TARGETS HelloWorld
+    TARGETS HelloWorld GoodbyeWorld
     EXPORT HelloWorldExport
     FILE_SET HEADERS
     FILE_SET stuff
@@ -27,7 +27,7 @@ install(
 set(CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_DEPENDENCIES  1942b4fa-b2c5-4546-9385-83f254070067)
 
 # Add the doctest dependency to the generated pakage even if not used
-# export(SETUP HelloWorldExport PACKAGE_DEPENDENCY doctest ENABLED ON)
+export(SETUP HelloWorldExport PACKAGE_DEPENDENCY doctest ENABLED ON)
 
 install(EXPORT HelloWorldExport
     FILE HelloWorldConfig.cmake

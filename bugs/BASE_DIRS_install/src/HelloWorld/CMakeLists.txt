@@ -9,9 +9,6 @@ target_sources(HelloWorld PUBLIC
    BASE_DIRS ${CMAKE_SOURCE_DIR}
    FILES HelloWorld.h)
 
-cmake_print_variables(CMAKE_SOURCE_DIR)
-
-
 target_sources(HelloWorld PUBLIC 
    FILE_SET generated_export_headers  
    TYPE HEADERS
