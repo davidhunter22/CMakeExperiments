@@ -18,7 +18,7 @@ find_package(HelloWorld CONFIG REQUIRED PATHS ${CMAKE_BINARY_DIR}/../install/cma
 add_executable(Consumer main.cpp)
 
 
-target_link_libraries(Consumer PUBLIC HelloWorld::HelloWorld)
+target_link_libraries(Consumer PUBLIC HelloWorld::GoodbyeWorld)
 
 # target_link_libraries(Consumer PUBLIC fmt::fmt)
 
